@@ -1,21 +1,32 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerWalk : MonoBehaviour
 {
     public InputActionAsset InputActions;
 
-    private InputAction m_moveAction;
-    private InputAction m_lookAction;
-    private InputAction m_jumpAction;
-
-    private Vector2 m_moveAmt;
-    private Vector2 m_lookAmt;
-    private Rigidbody m_rigidbody;
-
     public float WalkSpeed = 5f;
-    public float JumpSpeed = 5f;
-    public float RotateSpeed = 5f;
+    public float RotationSpeed = 12f;
+    public float JumpForce = 5f;
+
+    private InputAction _move;
+    private InputAction _jump;
+
+    private Rigidbody _rb;
+
+    private Vector2 _moveInput;
+    private bool _jumpQueued;
+    private bool _grounded;
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _rb.freezeRotation = true;
+
+        _move = InputActions.FindAction("Move");
+        _jump = InputActions.FindAction("Jump");
+    }
 
     private void OnEnable()
     {
@@ -27,52 +38,96 @@ public class PlayerWalk : MonoBehaviour
         InputActions.FindActionMap("Player").Disable();
     }
 
-    private void Awake()
-    {
-        m_moveAction = InputActions.FindAction("Move");
-        m_lookAction = InputActions.FindAction("Look");
-        m_jumpAction = InputActions.FindAction("Jump");
-
-        m_rigidbody = GetComponent<Rigidbody>();
-    }
-
     private void Update()
     {
-        m_moveAmt = m_moveAction.ReadValue<Vector2>();
-        m_lookAmt = m_lookAction.ReadValue<Vector2>();
+        _moveInput = _move.ReadValue<Vector2>();
 
-        if (m_jumpAction.WasPressedThisFrame())
-        {
-            Jump();
-        }
-    }
-
-    public void Jump()
-    {
-        m_rigidbody.AddForce(Vector3.up * JumpSpeed, ForceMode.Impulse);
+        if (_jump.WasPressedThisFrame())
+            _jumpQueued = true;
     }
 
     private void FixedUpdate()
     {
-        Walking();
-        Rotating();
+        CheckGround();
+        Move();
+        Rotate();
+        Jump();
     }
 
-    private void Walking()
+    private void Move()
     {
-        m_rigidbody.MovePosition(
-            m_rigidbody.position +
-            transform.forward * m_moveAmt.y * WalkSpeed * Time.deltaTime
+        Transform cam = Camera.main.transform;
+
+        Vector3 forward = cam.forward;
+        Vector3 right = cam.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 moveDir =
+            forward * _moveInput.y +
+            right * _moveInput.x;
+
+        _rb.MovePosition(
+            _rb.position +
+            moveDir * WalkSpeed * Time.fixedDeltaTime
+        );
+
+        if (moveDir.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRotation =
+                Quaternion.LookRotation(moveDir);
+
+            _rb.MoveRotation(
+                Quaternion.Slerp(
+                    _rb.rotation,
+                    targetRotation,
+                    RotationSpeed * Time.fixedDeltaTime
+                )
+            );
+        }
+    }
+
+    private void Rotate()
+    {
+        Vector3 direction = new Vector3(_moveInput.x, 0f, _moveInput.y);
+
+        if (direction.sqrMagnitude == 0f)
+            return;
+
+        Quaternion target = Quaternion.LookRotation(direction);
+
+        _rb.MoveRotation(
+            Quaternion.Slerp(
+                _rb.rotation,
+                target,
+                RotationSpeed * Time.fixedDeltaTime
+            )
         );
     }
 
-    private void Rotating()
+    private void Jump()
     {
-        if (m_moveAmt.y != 0)
-        {
-            float rotationAmount = m_lookAmt.x * RotateSpeed * Time.deltaTime;
-            Quaternion deltaRotation = Quaternion.Euler(0f, rotationAmount, 0f);
-            m_rigidbody.MoveRotation(m_rigidbody.rotation * deltaRotation);
-        }
+        if (!_jumpQueued)
+            return;
+
+        _jumpQueued = false;
+
+        if (!_grounded)
+            return;
+
+        _rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+    }
+
+    private void CheckGround()
+    {
+        _grounded = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            0.25f
+        );
     }
 }
