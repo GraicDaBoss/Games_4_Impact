@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 191534378}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -561,6 +561,7 @@ MonoBehaviour:
   WalkSpeed: 5
   RotationSpeed: 12
   JumpForce: 5
+  GroundCheckDistance: 0.15
 --- !u!1 &336548270
 GameObject:
   m_ObjectHideFlags: 0

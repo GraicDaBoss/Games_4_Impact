@@ -1,20 +1,20 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(BoxCollider))]
 public class PlayerWalk : MonoBehaviour
 {
     public InputActionAsset InputActions;
-
     public float WalkSpeed = 5f;
     public float RotationSpeed = 12f;
-    public float JumpForce = 5f;
+    public float JumpForce = 7f;
+    public float GroundCheckDistance = 0.15f; 
 
     private InputAction _move;
     private InputAction _jump;
-
     private Rigidbody _rb;
-
+    private BoxCollider _col;
     private Vector2 _moveInput;
     private bool _jumpQueued;
     private bool _grounded;
@@ -22,26 +22,18 @@ public class PlayerWalk : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _col = GetComponent<BoxCollider>();
         _rb.freezeRotation = true;
-
         _move = InputActions.FindAction("Move");
         _jump = InputActions.FindAction("Jump");
     }
 
-    private void OnEnable()
-    {
-        InputActions.FindActionMap("Player").Enable();
-    }
-
-    private void OnDisable()
-    {
-        InputActions.FindActionMap("Player").Disable();
-    }
+    private void OnEnable() => InputActions.FindActionMap("Player").Enable();
+    private void OnDisable() => InputActions.FindActionMap("Player").Disable();
 
     private void Update()
     {
         _moveInput = _move.ReadValue<Vector2>();
-
         if (_jump.WasPressedThisFrame())
             _jumpQueued = true;
     }
@@ -56,78 +48,42 @@ public class PlayerWalk : MonoBehaviour
 
     private void Move()
     {
-        Transform cam = Camera.main.transform;
-
-        Vector3 forward = cam.forward;
-        Vector3 right = cam.right;
-
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        Vector3 moveDir =
-            forward * _moveInput.y +
-            right * _moveInput.x;
-
-        _rb.MovePosition(
-            _rb.position +
-            moveDir * WalkSpeed * Time.fixedDeltaTime
-        );
-
-        if (moveDir.sqrMagnitude > 0.001f)
-        {
-            Quaternion targetRotation =
-                Quaternion.LookRotation(moveDir);
-
-            _rb.MoveRotation(
-                Quaternion.Slerp(
-                    _rb.rotation,
-                    targetRotation,
-                    RotationSpeed * Time.fixedDeltaTime
-                )
-            );
-        }
+        Vector3 velocity = _rb.linearVelocity;
+        velocity.x = _moveInput.x * WalkSpeed;
+        velocity.z = _moveInput.y * WalkSpeed;
+        _rb.linearVelocity = velocity;
     }
 
     private void Rotate()
     {
         Vector3 direction = new Vector3(_moveInput.x, 0f, _moveInput.y);
-
-        if (direction.sqrMagnitude == 0f)
-            return;
-
+        if (direction.sqrMagnitude == 0f) return;
         Quaternion target = Quaternion.LookRotation(direction);
-
-        _rb.MoveRotation(
-            Quaternion.Slerp(
-                _rb.rotation,
-                target,
-                RotationSpeed * Time.fixedDeltaTime
-            )
-        );
+        _rb.MoveRotation(Quaternion.Slerp(_rb.rotation, target,
+            RotationSpeed * Time.fixedDeltaTime));
     }
 
     private void Jump()
     {
-        if (!_jumpQueued)
-            return;
+        if (!_jumpQueued) return;
 
-        _jumpQueued = false;
+        
+        if (!_grounded) return;
+        _jumpQueued = false; 
 
-        if (!_grounded)
-            return;
-
+        Vector3 velocity = _rb.linearVelocity;
+        velocity.y = 0f;
+        _rb.linearVelocity = velocity;
         _rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
     }
 
     private void CheckGround()
     {
-        _grounded = Physics.Raycast(
-            transform.position,
-            Vector3.down,
-            0.25f
-        );
+        
+        float castOriginY = _col.bounds.min.y + 0.05f;
+        Vector3 origin = new Vector3(transform.position.x, castOriginY, transform.position.z);
+
+        _grounded = Physics.Raycast(origin, Vector3.down,
+            GroundCheckDistance, ~LayerMask.GetMask("Player"));
     }
 }
