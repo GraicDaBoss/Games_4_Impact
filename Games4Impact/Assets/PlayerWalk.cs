@@ -19,6 +19,11 @@ public class PlayerWalk : MonoBehaviour
     private bool _jumpQueued;
     private bool _grounded;
 
+    [Header("Animation")]
+    [SerializeField]
+    private Animator _animator;
+    
+    
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -34,6 +39,14 @@ public class PlayerWalk : MonoBehaviour
     private void Update()
     {
         _moveInput = _move.ReadValue<Vector2>();
+
+        if (_moveInput.magnitude > 0)
+        {
+            _animator.SetBool("is_Moving", true);
+        }
+        else
+            _animator.SetBool("is_Moving", false);
+        
         if (_jump.WasPressedThisFrame())
             _jumpQueued = true;
     }
