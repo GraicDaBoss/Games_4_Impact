@@ -341,6 +341,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3768465161748681128, guid: fe5bf13356002324ea384a2d28132e2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 31.950003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768465161748681128, guid: fe5bf13356002324ea384a2d28132e2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 36.306858
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768465161748681128, guid: fe5bf13356002324ea384a2d28132e2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 36.306858
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768465161748681128, guid: fe5bf13356002324ea384a2d28132e2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -380,6 +392,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3768465161748681128, guid: fe5bf13356002324ea384a2d28132e2d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4541765555702942482, guid: fe5bf13356002324ea384a2d28132e2d, type: 3}
       propertyPath: m_Name
       value: PuzzleSet
@@ -400,6 +416,18 @@ PrefabInstance:
     - target: {fileID: 8366194441499482292, guid: 91d51c48e8aa23042854870267656565, type: 3}
       propertyPath: m_Name
       value: Environment_Set1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174220740992221710, guid: 91d51c48e8aa23042854870267656565, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 31.950003
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174220740992221710, guid: 91d51c48e8aa23042854870267656565, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 36.306858
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174220740992221710, guid: 91d51c48e8aa23042854870267656565, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 36.306858
       objectReference: {fileID: 0}
     - target: {fileID: 9174220740992221710, guid: 91d51c48e8aa23042854870267656565, type: 3}
       propertyPath: m_LocalPosition.x
@@ -440,6 +468,10 @@ PrefabInstance:
     - target: {fileID: 9174220740992221710, guid: 91d51c48e8aa23042854870267656565, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174220740992221710, guid: 91d51c48e8aa23042854870267656565, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
