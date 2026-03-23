@@ -4,24 +4,20 @@ using TMPro;
 
 public class Sorting_Manager : MonoBehaviour
 {
-    
     public GameObject[] shirts;
-
-    
     public TextMeshProUGUI feedbackText;
+    public GrabberArm grabberArm;
 
     private int currentIndex = 0;
-    private GameObject currentShirt;
+    public GameObject currentShirt { get; private set; }
 
     void Start()
     {
         foreach (var shirt in shirts)
             shirt.SetActive(false);
-
-        ShowNextShirt();
     }
 
-    void ShowNextShirt()
+    public void ShowNextShirt()
     {
         if (currentIndex >= shirts.Length)
         {
@@ -32,12 +28,14 @@ public class Sorting_Manager : MonoBehaviour
 
         currentShirt = shirts[currentIndex];
         currentShirt.SetActive(true);
+
+        // Trigger arm to grab now that shirt is active
+        grabberArm.TriggerGrab();
     }
 
     public void PlayerChose(string zoneTag)
     {
         if (currentShirt == null) return;
-
         string correctAnswer = currentShirt.tag;
         bool isCorrect = (zoneTag == correctAnswer);
 
@@ -45,13 +43,12 @@ public class Sorting_Manager : MonoBehaviour
         {
             StartCoroutine(ShowFeedback(true));
             currentShirt.SetActive(false);
+            currentShirt = null;
             currentIndex++;
-            StartCoroutine(NextShirtDelay());
         }
         else
         {
             StartCoroutine(ShowFeedback(false));
-            
         }
     }
 
@@ -59,15 +56,7 @@ public class Sorting_Manager : MonoBehaviour
     {
         feedbackText.text = correct ? "Correct!" : "Wrong, try again!";
         feedbackText.color = correct ? Color.green : Color.red;
-
         yield return new WaitForSeconds(1.5f);
-
         feedbackText.text = "";
-    }
-
-    IEnumerator NextShirtDelay()
-    {
-        yield return new WaitForSeconds(0.5f);
-        ShowNextShirt();
     }
 }

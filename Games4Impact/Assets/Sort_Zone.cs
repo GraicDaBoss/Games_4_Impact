@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class Sort_Zone : MonoBehaviour
 {
-    
     public string zoneTag;
-
-    
     public Sorting_Manager manager;
-
-    
+    public GrabberArm grabberArm;
     public GameObject interactButton;
 
     private bool playerInside = false;
@@ -22,7 +18,6 @@ public class Sort_Zone : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
         playerInside = true;
         if (interactButton != null)
             interactButton.SetActive(true);
@@ -31,17 +26,15 @@ public class Sort_Zone : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
         playerInside = false;
         if (interactButton != null)
             interactButton.SetActive(false);
     }
 
-    
     public void OnInteractPressed()
     {
         if (!playerInside) return;
-
         manager.PlayerChose(zoneTag);
+        grabberArm.StartSequence(zoneTag);
     }
 }
