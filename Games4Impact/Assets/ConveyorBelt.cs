@@ -1,48 +1,46 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ConveyorBelt : MonoBehaviour
 {
-    [Header("Movement")]
-    public Vector3 beltDirection = Vector3.right;
-    public float beltSpeed = 2f;
-
-    [Header("Scrolling Texture")]
-    public Renderer beltRenderer;
-    public string textureMaterialProperty = "_MainTex";
-
-    private MaterialPropertyBlock propBlock;
+    [SerializeField] private float speed, conveyorSpeed;
+    [SerializeField] private Vector3 direction;
+    [SerializeField] private List<GameObject> onBelt = new();
+    private Material material;
 
     void Start()
     {
-        propBlock = new MaterialPropertyBlock();
+        material = GetComponent<MeshRenderer>().material;
     }
 
     void Update()
     {
-        // Scroll texture
-        beltRenderer.GetPropertyBlock(propBlock);
-        Vector2 offset = propBlock.GetVector(textureMaterialProperty);
-        offset += new Vector2(beltDirection.normalized.x, beltDirection.normalized.z) * beltSpeed * Time.deltaTime;
-        propBlock.SetVector(textureMaterialProperty + "_ST", new Vector4(1, 1, offset.x, offset.y));
-        beltRenderer.SetPropertyBlock(propBlock);
+        material.mainTextureOffset += new Vector2(0, 1) * conveyorSpeed * Time.deltaTime;
     }
 
-    void OnTriggerStay(Collider other)
+    void FixedUpdate()
     {
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb == null) return;
-
-        rb.linearVelocity = new Vector3(
-            beltDirection.normalized.x * beltSpeed,
-            rb.linearVelocity.y,
-            beltDirection.normalized.z * beltSpeed
-        );
+        for (int i = 0; i < onBelt.Count; i++)
+        {
+            PlayerWalk player = onBelt[i].GetComponent<PlayerWalk>();
+            if (player != null)
+                player.ExternalVelocity = direction * speed;
+        }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb == null) return;
-        rb.linearVelocity = Vector3.zero;
+        if (!onBelt.Contains(collision.gameObject))
+            onBelt.Add(collision.gameObject);
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        // Clear belt velocity when player leaves
+        PlayerWalk player = collision.gameObject.GetComponent<PlayerWalk>();
+        if (player != null)
+            player.ExternalVelocity = Vector3.zero;
+
+        onBelt.Remove(collision.gameObject);
     }
 }

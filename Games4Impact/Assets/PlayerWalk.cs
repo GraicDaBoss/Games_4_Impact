@@ -22,8 +22,17 @@ public class PlayerWalk : MonoBehaviour
     [Header("Animation")]
     [SerializeField]
     private Animator _animator;
-    
-    
+
+    [HideInInspector] public Vector3 ExternalVelocity; // Set by ConveyorBelt
+
+    private void Move()
+    {
+        Vector3 velocity = _rb.linearVelocity;
+        velocity.x = (_moveInput.x * WalkSpeed) + ExternalVelocity.x;
+        velocity.z = (_moveInput.y * WalkSpeed) + ExternalVelocity.z;
+        _rb.linearVelocity = velocity;
+    }
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -59,13 +68,7 @@ public class PlayerWalk : MonoBehaviour
         Jump();
     }
 
-    private void Move()
-    {
-        Vector3 velocity = _rb.linearVelocity;
-        velocity.x = _moveInput.x * WalkSpeed;
-        velocity.z = _moveInput.y * WalkSpeed;
-        _rb.linearVelocity = velocity;
-    }
+ 
 
     private void Rotate()
     {
