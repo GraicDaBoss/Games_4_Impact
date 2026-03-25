@@ -81,9 +81,14 @@ public class GrabberArm : MonoBehaviour
         {
             // Correct — return to center empty, then show and grab next shirt
             yield return StartCoroutine(MoveTo(centerPos.position));
+
+            // Deactivate shirt NOW after arm has fully returned
+            if (currentShirt != null)
+                currentShirt.gameObject.SetActive(false);
+
             currentShirt = null;
             isAnimating = false;
-            sortingManager.ShowNextShirt(); // this activates shirt AND calls TriggerGrab
+            sortingManager.ShowNextShirt();
             yield break;
         }
 

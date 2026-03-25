@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Factory.unity
     guid: 72a63852e9c4fb546b7b132f817bc09d
+  - enabled: 1
+    path: Assets/Scenes/Sewing.unity
+    guid: d4c78af2cdc66be48b74c95ed850313a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
