@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2992147225316142222}
   - component: {fileID: 9174524316731331005}
   - component: {fileID: 8726399176383951264}
+  - component: {fileID: 2966729525977127008}
   m_Layer: 0
   m_Name: ChairPrefab
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3654032694744198037}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.48467642, y: 0.5148677, z: 0.51486796, w: -0.48467615}
+  m_LocalRotation: {x: -0.48467728, y: -0.51486695, z: -0.51486695, w: 0.48467728}
   m_LocalPosition: {x: 1031.9473, y: 543.05817, z: -47.84977}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -93.46}
 --- !u!33 &9174524316731331005
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86,3 +87,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2966729525977127008
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654032694744198037}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4564847448827134883, guid: 2fa2d5ba33ed97a4cabe2f2c4e7619ca, type: 3}
