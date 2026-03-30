@@ -9,7 +9,9 @@ public class PlayerWalk : MonoBehaviour
     public float WalkSpeed = 5f;
     public float RotationSpeed = 12f;
     public float JumpForce = 7f;
-    public float GroundCheckDistance = 0.15f; 
+    public float GroundCheckDistance = 0.15f;
+
+    public GameObject audiowalk;
 
     private InputAction _move;
     private InputAction _jump;
@@ -18,12 +20,13 @@ public class PlayerWalk : MonoBehaviour
     private Vector2 _moveInput;
     private bool _jumpQueued;
     private bool _grounded;
+    
 
     [Header("Animation")]
     [SerializeField]
     private Animator _animator;
 
-    [HideInInspector] public Vector3 ExternalVelocity; // Set by ConveyorBelt
+    [HideInInspector] public Vector3 ExternalVelocity; 
 
     private void Move()
     {
@@ -31,6 +34,7 @@ public class PlayerWalk : MonoBehaviour
         velocity.x = (_moveInput.x * WalkSpeed) + ExternalVelocity.x;
         velocity.z = (_moveInput.y * WalkSpeed) + ExternalVelocity.z;
         _rb.linearVelocity = velocity;
+        audiowalk.SetActive(true);
     }
 
     private void Awake()
@@ -40,6 +44,7 @@ public class PlayerWalk : MonoBehaviour
         _rb.freezeRotation = true;
         _move = InputActions.FindAction("Move");
         _jump = InputActions.FindAction("Jump");
+        audiowalk.SetActive(false);
     }
 
     private void OnEnable() => InputActions.FindActionMap("Player").Enable();
