@@ -8,6 +8,7 @@ TagManager:
   - Reuse
   - Repair
   - NPC
+  - Camera Holder
   layers:
   - Default
   - TransparentFX
