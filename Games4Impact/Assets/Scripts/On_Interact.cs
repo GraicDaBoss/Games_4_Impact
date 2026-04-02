@@ -10,8 +10,18 @@ public class On_Interact : MonoBehaviour
 
     public Transform headPoint;
 
+    [Header("Dialogue")] 
+    [SerializeField] private bool npc_Can_Interact;
+    [SerializeField] private GameObject NPC = null;
+    
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("NPC"))
+        {
+            npc_Can_Interact = true;
+            NPC = other.gameObject;
+        }
+        
         PickupItem item = other.GetComponent<PickupItem>();
         if (item != null)
         {
@@ -21,6 +31,12 @@ public class On_Interact : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.CompareTag("NPC"))
+        {
+            npc_Can_Interact = false;
+            NPC = null;
+        }
+        
         PickupItem item = other.GetComponent<PickupItem>();
         if (item != null && item == currentItem)
         {
@@ -30,20 +46,44 @@ public class On_Interact : MonoBehaviour
 
     public void Interact()
     {
-        // Put down 
-        if (carriedItem != null)
+        // Prioritise interacting with NPC
+        if (npc_Can_Interact == true)
         {
-            carriedItem.PutDown(transform.position + transform.forward * 1.5f);
-            carriedItem = null;
-            return;
-        }
+            if (NPC == null)
+            {
+                print("ERROR: NPC not detected properly");
+                return;
+            }
 
-        // Pick up
-        if (currentItem != null)
+            // Check if we're already in a dialogue, for skipping type out or going to next line
+            if (NPC.GetComponent<Dialogue_System>().in_Dialogue == true)
+            {
+                NPC.GetComponent<Dialogue_System>().Dialogue_Interacted();
+            }
+            
+            // otherwise start the dialogue
+            else
+                NPC.GetComponent<Dialogue_System>().Start_Dialogue();
+        }
+            
+        // Interact with items instead
+        else
         {
-            currentItem.Pickup(headPoint);
-            carriedItem = currentItem;
-            currentItem = null;
+            // Put down 
+            if (carriedItem != null)
+            {
+                carriedItem.PutDown(transform.position + transform.forward * 1.5f);
+                carriedItem = null;
+                return;
+            }
+
+            // Pick up
+            if (currentItem != null)
+            {
+                currentItem.Pickup(headPoint);
+                carriedItem = currentItem;
+                currentItem = null;
+            }
         }
     }
 }
