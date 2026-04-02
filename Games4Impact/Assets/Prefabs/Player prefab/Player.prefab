@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8235149860055316335}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1012.24, y: 549.56, z: -18.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -183,11 +183,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0a2f8491c60ae45b826ab7c83e3bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interact_Script: {fileID: 742932236198217484}
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   WalkSpeed: 5
   RotationSpeed: 12
   JumpForce: 8
   GroundCheckDistance: 0.15
+  audiowalk: {fileID: 8439454671464281141}
   _animator: {fileID: 7751502263338152152}
   ExternalVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &8655410090427084551
@@ -257,6 +259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headPoint: {fileID: 5585809139173050634}
+  npc_Can_Interact: 0
+  NPC: {fileID: 0}
 --- !u!1001 &3249453281228247615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,5 +415,10 @@ Animator:
 --- !u!4 &3067753953277720020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 56d6b8f335f37a75f9162b462d519c6a, type: 3}
+  m_PrefabInstance: {fileID: 3249453281228247615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8439454671464281141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6342924000841557514, guid: 56d6b8f335f37a75f9162b462d519c6a, type: 3}
   m_PrefabInstance: {fileID: 3249453281228247615}
   m_PrefabAsset: {fileID: 0}
