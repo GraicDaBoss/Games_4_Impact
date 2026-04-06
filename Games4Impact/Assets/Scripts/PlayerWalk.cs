@@ -15,8 +15,7 @@ public class PlayerWalk : MonoBehaviour
     [SerializeField] private On_Interact interact_Script;
     public bool in_Dialogue = false; // For restricting player movement when in dialogue 
     
-    public GameObject audiowalk;
-
+    
     private InputAction _move;
     private InputAction _jump;
     private InputAction _interact;
@@ -50,7 +49,7 @@ public class PlayerWalk : MonoBehaviour
         _move = InputActions.FindAction("Move");
         _jump = InputActions.FindAction("Jump");
         _interact = InputActions.FindAction("Interact");
-        audiowalk.SetActive(false);
+        
     }
 
     private void OnEnable() => InputActions.FindActionMap("Player").Enable();
