@@ -25,16 +25,34 @@ public class Dialogue_System : MonoBehaviour
     [SerializeField] private PlayerWalk player_Controls;
     public bool in_Dialogue = false;
     
+    [Header("Restrict Camera Controls")]
+    [SerializeField] private GameObject dialogue_Camera_Position; // Object under NPC prefab to place camera angle
+    private camerafollow camera_Script;
 
-   public void Start_Dialogue()
+    
+
+    private void Start()
     {
+        camera_Script = Camera.main.GetComponent<camerafollow>();
+    }
+
+
+    public void Start_Dialogue()
+    {
+        // Retrieve dialogue
         current_Dialogue = character_Script.Get_Dialogue(current_Dialogue_I);
         if (current_Dialogue == null)
         {
             print("ERROR: Dialogue not found");
             return;
         }
-
+        
+        // Set up camera
+        Vector3 camera_Target_Position = dialogue_Camera_Position.transform.position;
+        
+        camera_Script.Pan_To_Dialogue(camera_Target_Position, this.transform.position);
+        
+        // Start writing dialogue
         Toggle_Dialogue();
         StartCoroutine(Type_Line());
     }
@@ -46,7 +64,7 @@ public class Dialogue_System : MonoBehaviour
         
         //talking_Clip.Play();
         currently_Typing = true;
-        // for each letter in the current line of the current dialogue
+        // Add each character in the line incrementally
         foreach (char c in current_Dialogue[current_Line_I].ToCharArray())
         {
             text_Component.text += c;
@@ -79,6 +97,7 @@ public class Dialogue_System : MonoBehaviour
             if (current_Dialogue_I != 1)
                 current_Dialogue_I = 1;
             
+            camera_Script.Pan_From_Dialogue();
             Toggle_Dialogue();
         }
             
