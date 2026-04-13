@@ -29,6 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1868583951191360489}
   - {fileID: 9081306775506662222}
   - {fileID: 1824448166690190248}
   - {fileID: 4069610198819567511}
@@ -47,6 +48,7 @@ GameObject:
   - component: {fileID: 7358922988869646948}
   - component: {fileID: 1404263877384800141}
   - component: {fileID: 685643209072835411}
+  - component: {fileID: 510623800057085843}
   m_Layer: 0
   m_Name: BeltLegs (1)
   m_TagString: Untagged
@@ -122,6 +124,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &510623800057085843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289029263669408245}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075154915, y: 0.009404269, z: 0.042988203}
+  m_Center: {x: -1.6232492e-10, y: -0.0000000015593087, z: -0.005446719}
 --- !u!1 &4792871370245387448
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +156,7 @@ GameObject:
   - component: {fileID: 9081306775506662222}
   - component: {fileID: 2101056075442170935}
   - component: {fileID: 2407179013093959087}
+  - component: {fileID: 7500963537064891101}
   m_Layer: 0
   m_Name: BeltLegs
   m_TagString: Untagged
@@ -208,6 +232,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7500963537064891101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792871370245387448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075154915, y: 0.009404269, z: 0.042988203}
+  m_Center: {x: -1.6232492e-10, y: -0.0000000015593087, z: -0.005446719}
 --- !u!1 &6588067726951494462
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +264,7 @@ GameObject:
   - component: {fileID: 6564862094591705113}
   - component: {fileID: 5543821013035675702}
   - component: {fileID: 5175949569245653598}
+  - component: {fileID: 4791798364838734768}
   m_Layer: 0
   m_Name: BeltLegs (2)
   m_TagString: Untagged
@@ -294,6 +340,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4791798364838734768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6588067726951494462}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075154915, y: 0.009404269, z: 0.042988203}
+  m_Center: {x: -1.6232492e-10, y: -0.0000000015593087, z: -0.005446719}
 --- !u!1 &6652261084134412828
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +372,7 @@ GameObject:
   - component: {fileID: 1824448166690190248}
   - component: {fileID: 2742306745832352731}
   - component: {fileID: 3338362878156749320}
+  - component: {fileID: 9125449974471155051}
   m_Layer: 0
   m_Name: BeltFrame
   m_TagString: Untagged
@@ -380,6 +448,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9125449974471155051
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652261084134412828}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5053925668127403250, guid: 2fa2d5ba33ed97a4cabe2f2c4e7619ca, type: 3}
 --- !u!1 &8661595267564009391
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,3 +556,93 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &2189930609759790082
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2255889865739203544}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1052.76
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 545.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -38.99
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.00095655664
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00095655664
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071062
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071062
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -180.155
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: be15cfb72b4213b4b9a4cfa28f6ce82c, type: 2}
+    - target: {fileID: 919132149155446097, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      propertyPath: m_Name
+      value: Belt
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3038823837983439581}
+  m_SourcePrefab: {fileID: 100100000, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+--- !u!1 &1343580774539041107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+  m_PrefabInstance: {fileID: 2189930609759790082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3038823837983439581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343580774539041107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7c31885b821ce49a7a4e47d836094f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.23
+  conveyorSpeed: 0.23
+  direction: {x: -2, y: 0, z: 0}
+  onBelt: []
+--- !u!4 &1868583951191360489 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8ddaa55521f51cb419aea04c55048894, type: 3}
+  m_PrefabInstance: {fileID: 2189930609759790082}
+  m_PrefabAsset: {fileID: 0}
