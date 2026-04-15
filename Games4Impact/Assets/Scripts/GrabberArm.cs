@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class GrabberArm : MonoBehaviour
 {
-    [Header("References")]
+    
     public Sorting_Manager sortingManager;
     public Transform arm;
     public Transform shirtAttachPoint;
 
-    [Header("Positions")]
+    
     public Transform centerPos;
     public Transform grabPos;
     public Transform recycleDropPos;
     public Transform reuseDropPos;
 
-    [Header("Settings")]
+    
     public float moveSpeed = 3f;
 
     private Transform currentShirt;
@@ -39,14 +39,13 @@ public class GrabberArm : MonoBehaviour
         currentShirt = FindActiveShirt();
         if (currentShirt == null) { isAnimating = false; yield break; }
 
-        // Move down to grab
+        
         yield return StartCoroutine(MoveTo(grabPos.position));
 
-        // Attach shirt
+        
         currentShirt.SetParent(shirtAttachPoint);
         currentShirt.localPosition = Vector3.zero;
 
-        // Move back to center
         yield return StartCoroutine(MoveTo(centerPos.position));
 
         isAnimating = false;
@@ -59,16 +58,16 @@ public class GrabberArm : MonoBehaviour
         bool isCorrect = currentShirt != null && (zone == currentShirt.tag);
         Transform dropPos = (zone == "Recycle") ? recycleDropPos : reuseDropPos;
 
-        // Move to drop zone
+        
         yield return StartCoroutine(MoveTo(dropPos.position));
 
-        // Drop shirt
+        
         if (currentShirt != null)
             currentShirt.SetParent(null);
 
         if (!isCorrect)
         {
-            // Wrong — pick shirt back up and return to center
+            
             yield return new WaitForSeconds(1f);
             if (currentShirt != null)
             {
@@ -79,10 +78,19 @@ public class GrabberArm : MonoBehaviour
         }
         else
         {
-            // Correct — return to center empty, then show and grab next shirt
+            // Correct — drop shirt as arm starts returning to center
+            if (currentShirt != null)
+            {
+                currentShirt.SetParent(null);
+
+                Rigidbody rb = currentShirt.GetComponent<Rigidbody>();
+                if (rb != null)
+                    rb.isKinematic = false;
+            }
+
+            // Now move back to center (shirt is already falling)
             yield return StartCoroutine(MoveTo(centerPos.position));
 
-            // Deactivate shirt NOW after arm has fully returned
             if (currentShirt != null)
                 currentShirt.gameObject.SetActive(false);
 
@@ -91,8 +99,6 @@ public class GrabberArm : MonoBehaviour
             sortingManager.ShowNextShirt();
             yield break;
         }
-
-        isAnimating = false;
     }
 
     IEnumerator MoveTo(Vector3 target)
