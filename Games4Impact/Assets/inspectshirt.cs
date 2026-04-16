@@ -6,32 +6,73 @@ public class inspectshirt : MonoBehaviour
     public Transform targetPosition;
     public float moveSpeed = 5f;
 
+    
+    public float newFOV = 30f;
+    public float speed = 5f;
+
     Vector3 originalPosition;
     Quaternion originalRotation;
-    bool moved;
+    float originalFOV;
+
+    bool triggered;
 
     void Start()
     {
         originalPosition = targetCamera.transform.position;
         originalRotation = targetCamera.transform.rotation;
+        originalFOV = targetCamera.fieldOfView;
     }
 
     public void OnInteract()
     {
-        moved = !moved;
+        triggered = !triggered; 
     }
 
     void Update()
     {
-        if (moved)
+        if (triggered)
         {
-            targetCamera.transform.position = Vector3.Lerp(targetCamera.transform.position, targetPosition.position, Time.deltaTime * moveSpeed);
-            targetCamera.transform.rotation = Quaternion.Lerp(targetCamera.transform.rotation, targetPosition.rotation, Time.deltaTime * moveSpeed);
+            
+            targetCamera.transform.position = Vector3.Lerp(
+                targetCamera.transform.position,
+                targetPosition.position,
+                Time.deltaTime * moveSpeed
+            );
+
+            targetCamera.transform.rotation = Quaternion.Lerp(
+                targetCamera.transform.rotation,
+                targetPosition.rotation,
+                Time.deltaTime * moveSpeed
+            );
+
+            
+            targetCamera.fieldOfView = Mathf.Lerp(
+                targetCamera.fieldOfView,
+                newFOV,
+                Time.deltaTime * speed
+            );
         }
         else
         {
-            targetCamera.transform.position = Vector3.Lerp(targetCamera.transform.position, originalPosition, Time.deltaTime * moveSpeed);
-            targetCamera.transform.rotation = Quaternion.Lerp(targetCamera.transform.rotation, originalRotation, Time.deltaTime * moveSpeed);
+            
+            targetCamera.transform.position = Vector3.Lerp(
+                targetCamera.transform.position,
+                originalPosition,
+                Time.deltaTime * moveSpeed
+            );
+
+            targetCamera.transform.rotation = Quaternion.Lerp(
+                targetCamera.transform.rotation,
+                originalRotation,
+                Time.deltaTime * moveSpeed
+            );
+
+            
+            targetCamera.fieldOfView = Mathf.Lerp(
+                targetCamera.fieldOfView,
+                originalFOV,
+                Time.deltaTime * speed
+            );
         }
     }
 }

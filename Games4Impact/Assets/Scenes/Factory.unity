@@ -23,9 +23,9 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.79
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.8037735, g: 0.10742063, b: 0.03488065, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 843859319}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2017,7 +2017,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 20.5
+  field of view: 21.1
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -3612,7 +3612,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.21456033, g: 0.294921, b: 0.7735849, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -8687,7 +8687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1763477472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8703,6 +8703,8 @@ MonoBehaviour:
   targetCamera: {fileID: 337253162}
   targetPosition: {fileID: 1591839680}
   moveSpeed: 5
+  newFOV: 30
+  speed: 5
 --- !u!65 &1763477473
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10233,15 +10235,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 508539125e8d83746bf3ad6edd3fcac6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.887207
+      value: 11.23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 508539125e8d83746bf3ad6edd3fcac6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9199829
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 508539125e8d83746bf3ad6edd3fcac6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.313898
+      value: 9.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 508539125e8d83746bf3ad6edd3fcac6, type: 3}
       propertyPath: m_LocalRotation.w
