@@ -4152,6 +4152,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {fileID: 191534375}
+  pan_Speed: 0
+  pan_Allowance: 0
+  pre_Dialogue_Position: {x: 0, y: 0, z: 0}
+  mid_Dialogue_Position: {x: 0, y: 0, z: 0}
+  in_Dialogue: 0
+  ending_Dialogue: 0
+  mid_Pan: 0
 --- !u!1001 &339016227
 PrefabInstance:
   m_ObjectHideFlags: 0
