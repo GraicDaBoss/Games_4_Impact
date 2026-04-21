@@ -27,7 +27,7 @@ public class Dialogue_System : MonoBehaviour
     public bool in_Dialogue = false;
     
     [Header("Restrict Camera Controls")]
-    [SerializeField] private GameObject dialogue_Camera_Position; // Object under NPC prefab to place camera angle
+    public GameObject dialogue_Camera_Position; // Object under NPC prefab to place camera angle
     private camerafollow camera_Script;
 
     
