@@ -54,20 +54,15 @@ public class GrabberArm : MonoBehaviour
     IEnumerator DropSequence(string zone)
     {
         isAnimating = true;
-
         bool isCorrect = currentShirt != null && (zone == currentShirt.tag);
         Transform dropPos = (zone == "Recycle") ? recycleDropPos : reuseDropPos;
 
-        
         yield return StartCoroutine(MoveTo(dropPos.position));
 
-        
         if (currentShirt != null)
             currentShirt.SetParent(null);
-
         if (!isCorrect)
         {
-            
             yield return new WaitForSeconds(1f);
             if (currentShirt != null)
             {
@@ -75,29 +70,25 @@ public class GrabberArm : MonoBehaviour
                 currentShirt.localPosition = Vector3.zero;
             }
             yield return StartCoroutine(MoveTo(centerPos.position));
+            isAnimating = false;  
         }
         else
         {
-            // Correct — drop shirt as arm starts returning to center
+            
             if (currentShirt != null)
             {
                 currentShirt.SetParent(null);
-
                 Rigidbody rb = currentShirt.GetComponent<Rigidbody>();
                 if (rb != null)
                     rb.isKinematic = false;
             }
-
-            // Now move back to center (shirt is already falling)
+          
             yield return StartCoroutine(MoveTo(centerPos.position));
-
             if (currentShirt != null)
                 currentShirt.gameObject.SetActive(false);
-
             currentShirt = null;
             isAnimating = false;
             sortingManager.ShowNextShirt();
-            yield break;
         }
     }
 
