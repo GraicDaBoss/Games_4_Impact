@@ -33,7 +33,9 @@ public class Sort_Zone : MonoBehaviour
 
     public void OnInteractPressed()
     {
+        print("interact");
         if (!playerInside) return;
+        print("player in zone");
         manager.PlayerChose(zoneTag);
         grabberArm.StartSequence(zoneTag);
     }

@@ -11,8 +11,14 @@ public class On_Interact : MonoBehaviour
     public Transform headPoint;
 
     [Header("Dialogue")] 
-    [SerializeField] private bool npc_Can_Interact;
+    public bool npc_Can_Interact;
     [SerializeField] private GameObject NPC = null;
+    public bool is_Puzzle_NPC = false;
+    
+    [Header("Puzzle Buttons")]
+    private Sort_Zone puzzle_Button_Script;
+    private bool can_Sort = false;
+
     
     private void OnTriggerEnter(Collider other)
     {
@@ -22,6 +28,12 @@ public class On_Interact : MonoBehaviour
             NPC = other.gameObject;
         }
         
+        else if (other.CompareTag("Buttons"))
+        {
+            puzzle_Button_Script = other.GetComponent<Sort_Zone>();
+            can_Sort = true;
+        }
+
         PickupItem item = other.GetComponent<PickupItem>();
         if (item != null)
         {
@@ -33,8 +45,17 @@ public class On_Interact : MonoBehaviour
     {
         if (other.CompareTag("NPC"))
         {
+            if (is_Puzzle_NPC) // Stops data loss for puzzle, otherwise can't interact to leave dialogue
+                return;
+            
             npc_Can_Interact = false;
             NPC = null;
+        }
+        
+        else if (other.CompareTag("Buttons"))
+        {
+            puzzle_Button_Script = null;
+            can_Sort = false;
         }
         
         PickupItem item = other.GetComponent<PickupItem>();
@@ -54,7 +75,8 @@ public class On_Interact : MonoBehaviour
                 print("ERROR: NPC not detected properly");
                 return;
             }
-
+            
+            
             // Check if we're already in a dialogue, for skipping type out or going to next line
             if (NPC.GetComponent<Dialogue_System>().in_Dialogue == true)
             {
@@ -63,9 +85,23 @@ public class On_Interact : MonoBehaviour
             
             // otherwise start the dialogue
             else
+            {
+                // Skip if Puzzle NPC since interations are triggered differently
+                if (is_Puzzle_NPC)
+                    return;
+                
                 NPC.GetComponent<Dialogue_System>().Start_Dialogue();
+            }
         }
             
+        else if (can_Sort == true)
+        {
+            if (puzzle_Button_Script == null)
+                return;
+            
+            puzzle_Button_Script.OnInteractPressed();
+        }
+        
         // Interact with items instead
         else
         {
@@ -86,4 +122,14 @@ public class On_Interact : MonoBehaviour
             }
         }
     }
+
+    // Puzzle NPC starts through a trigger not interacting, this links the NPC properly
+    // Otherwise, cant interact with dialogue, or even leave it
+    public void Link_Puzzle_NPC()
+    {
+        is_Puzzle_NPC = true;
+        NPC = GameObject.FindGameObjectWithTag("NPC");
+    }
+    
 }
+
