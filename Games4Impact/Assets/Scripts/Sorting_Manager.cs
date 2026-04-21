@@ -41,7 +41,7 @@ public class Sorting_Manager : MonoBehaviour
 
         string correctAnswer = currentShirt.tag;
         bool isCorrect = (zoneTag == correctAnswer);
-
+        Debug.Log($"Zone Tag: {zoneTag}, Shirt Tag: {correctAnswer}");
         if (isCorrect)
         {
             StartCoroutine(ShowFeedback(true));
