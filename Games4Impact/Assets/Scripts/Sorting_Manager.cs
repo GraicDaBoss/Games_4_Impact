@@ -6,7 +6,6 @@ using UnityEngine.Android;
 public class Sorting_Manager : MonoBehaviour
 {
     public GameObject[] shirts;
-    public TextMeshProUGUI feedbackText;
     public GrabberArm grabberArm;
     public GameObject endObject; 
 
