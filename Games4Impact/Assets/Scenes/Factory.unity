@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &6586111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11597,6 +11597,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 742932236198217484, guid: 731c93b00dd4a26ce98b9b87eb10d0e0, type: 3}
+      propertyPath: inspect_Button_Script
+      value: 
+      objectReference: {fileID: 1763477477}
     - target: {fileID: 1779778293338700296, guid: 731c93b00dd4a26ce98b9b87eb10d0e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 992.87396
@@ -12183,7 +12187,7 @@ GameObject:
   - component: {fileID: 1763477477}
   m_Layer: 0
   m_Name: inspect button
-  m_TagString: Buttons
+  m_TagString: Inspect Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14274,7 +14278,7 @@ Transform:
   m_GameObject: {fileID: 5947428176697727384}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7070298, y: 0.010438352, z: 0.010438301, w: 0.70702976}
-  m_LocalPosition: {x: -18.4, y: 0.49, z: -4.07}
+  m_LocalPosition: {x: -18.4, y: 0.47, z: -4.07}
   m_LocalScale: {x: 107.78001, y: 107.78001, z: 107.78001}
   m_ConstrainProportionsScale: 0
   m_Children: []
