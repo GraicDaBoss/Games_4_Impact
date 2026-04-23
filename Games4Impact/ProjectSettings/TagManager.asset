@@ -9,6 +9,7 @@ TagManager:
   - Repair
   - NPC
   - Camera Holder
+  - Buttons
   layers:
   - Default
   - TransparentFX
