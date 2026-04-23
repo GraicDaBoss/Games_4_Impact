@@ -2932,6 +2932,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: first_Dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: finished_Dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[0]'
+      value: Hey! Help me sort these clothes!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[1]'
+      value: We need to separate repairables from recyclables.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[2]'
+      value: Check the boards!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: reinteract_Dialogue.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'finished_Dialogue.Array.data[0]'
+      value: Great work!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'finished_Dialogue.Array.data[1]'
+      value: Go ahead!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: player_Wrong_Dialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: player_Correct_Dialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'player_Wrong_Dialogue.Array.data[0]'
+      value: I don't think that's right!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'player_Wrong_Dialogue.Array.data[1]'
+      value: Try again!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'player_Correct_Dialogue.Array.data[0]'
+      value: Good job! Keep going
+      objectReference: {fileID: 0}
     - target: {fileID: 5104367213594179895, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8089,6 +8141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Box
       objectReference: {fileID: 0}
+    - target: {fileID: 2916012993964462983, guid: 4073ce129505abd7f937eca6c35094a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6028542479572624503, guid: 4073ce129505abd7f937eca6c35094a3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9869,7 +9925,7 @@ MonoBehaviour:
   endObject: {fileID: 575747731}
   dialogue_System: {fileID: 1546770945}
   dialogue_Camera_Positions:
-  - {fileID: 2055129656}
+  - {fileID: 0}
   - {fileID: 1718476956}
 --- !u!4 &1479532481
 Transform:
@@ -13419,11 +13475,6 @@ Transform:
   - {fileID: 3768465161938576716}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2055129656 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7183435680744108593, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
-  m_PrefabInstance: {fileID: 417866077}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2058638373
 GameObject:
   m_ObjectHideFlags: 0
