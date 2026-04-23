@@ -48,8 +48,6 @@ public class camerafollow : MonoBehaviour
                     Reset_Values();
             }
 
-            else
-                print ("ERROR: Camera not panning correctly");
         }
         
         else

@@ -9,7 +9,7 @@ public class Dialogue_System : MonoBehaviour
     [Header("Dialogue Functionality")]
     [SerializeField] private Character_Script character_Script;
     [SerializeField] private string[] current_Dialogue;
-    private int current_Dialogue_I = 0; // Dialogue ID
+    public int current_Dialogue_I = 0; // Dialogue ID
     private int current_Line_I = 0; // Individual line within Dialogue ID
     private bool currently_Typing = false; // For checking if dialogue is actively being written
     
@@ -23,10 +23,11 @@ public class Dialogue_System : MonoBehaviour
     // figure out later what needs to be turned off where
     // will probably have to use bools to return; specific functions instead of turning scripts off 
     [SerializeField] private PlayerWalk player_Controls;
+    [SerializeField] private On_Interact interact_Script;
     public bool in_Dialogue = false;
     
     [Header("Restrict Camera Controls")]
-    [SerializeField] private GameObject dialogue_Camera_Position; // Object under NPC prefab to place camera angle
+    public GameObject dialogue_Camera_Position; // Object under NPC prefab to place camera angle
     private camerafollow camera_Script;
 
     
@@ -46,6 +47,8 @@ public class Dialogue_System : MonoBehaviour
             print("ERROR: Dialogue not found");
             return;
         }
+        
+        interact_Script.npc_Can_Interact = true;
         
         // Set up camera
         Vector3 camera_Target_Position = dialogue_Camera_Position.transform.position;
@@ -99,6 +102,7 @@ public class Dialogue_System : MonoBehaviour
             
             camera_Script.Pan_From_Dialogue();
             Toggle_Dialogue();
+            interact_Script.npc_Can_Interact = false;
         }
             
         // Else move onto next line

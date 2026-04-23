@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Character_Script : MonoBehaviour
+public class Puzzle_NPC_Script : MonoBehaviour
 {
     [Header("Dialogue Text - Elements are different lines")] // Different types of dialogue, arrays contain individual lines
     [SerializeField] private string[] first_Dialogue;
