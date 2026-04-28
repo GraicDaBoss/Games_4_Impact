@@ -10,6 +10,7 @@ TagManager:
   - NPC
   - Camera Holder
   - Buttons
+  - Inspect Button
   layers:
   - Default
   - TransparentFX

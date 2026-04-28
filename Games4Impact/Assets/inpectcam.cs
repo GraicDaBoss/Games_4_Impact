@@ -4,7 +4,7 @@ public class CameraSwitcher : MonoBehaviour
 {
     [SerializeField] private Camera newCamera;
     [SerializeField] private GameObject buttonObject;
-
+    
     private bool isColliderEntered = false;
     private bool isNewCameraActive = false;
 
@@ -18,7 +18,7 @@ public class CameraSwitcher : MonoBehaviour
         {
             buttonObject.SetActive(true);
         }
-
+        
         Debug.Log("Entered collider - Press camera button to switch camera");
     }
 
@@ -38,7 +38,7 @@ public class CameraSwitcher : MonoBehaviour
         {
             SwitchCamera();
         }
-
+        
         Debug.Log("Exited collider");
     }
 
