@@ -340,9 +340,21 @@ PrefabInstance:
       value: YarnBallPrefab (12)
       objectReference: {fileID: 0}
     - target: {fileID: 220501091131121228, guid: fb02270fdf11afd49bfd8c4b74a472bd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 220501091131121228, guid: fb02270fdf11afd49bfd8c4b74a472bd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 220501091131121228, guid: fb02270fdf11afd49bfd8c4b74a472bd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b2daa64059d01c147859e59e52c5da7e, type: 2}
+    - target: {fileID: 220501091131121228, guid: fb02270fdf11afd49bfd8c4b74a472bd, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 93370711cbb1ef44fa34b2deb3b32e25, type: 2}
     - target: {fileID: 5323705417912369024, guid: fb02270fdf11afd49bfd8c4b74a472bd, type: 3}
       propertyPath: m_LocalScale.x
       value: 52.269855
