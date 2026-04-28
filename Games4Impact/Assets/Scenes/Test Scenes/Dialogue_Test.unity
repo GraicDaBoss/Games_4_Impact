@@ -806,6 +806,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4081469947307846937, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: first_Dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081469947307846937, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[0]'
+      value: Maybe try move one of those boxes to get back up!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081469947307846937, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[1]'
+      value: Hey! Looks like you fell down!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081469947307846937, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[2]'
+      value: Maybe try move one of those boxes to get back up!
+      objectReference: {fileID: 0}
     - target: {fileID: 5107141323093863398, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.21

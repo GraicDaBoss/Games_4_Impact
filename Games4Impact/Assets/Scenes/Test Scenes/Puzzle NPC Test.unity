@@ -2246,11 +2246,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515734188}
   m_CullTransparentMesh: 1
---- !u!1 &559769408 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7183435680744108593, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
-  m_PrefabInstance: {fileID: 1545348312746433743}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &643310237 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6995769662154434272, guid: 4073ce129505abd7f937eca6c35094a3, type: 3}
@@ -4388,7 +4383,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7075339791270811515, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
   m_PrefabInstance: {fileID: 1545348312746433743}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1133751977}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83ebb573734ee0a3aa0f5e9528854d73, type: 3}
@@ -4915,6 +4910,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4718074533374438666, guid: 7958ea3d4cdf6af4f92b55a590ca3531, type: 3}
+--- !u!1 &1133751977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7441538227468568978, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+  m_PrefabInstance: {fileID: 1545348312746433743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1135447101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10433,6 +10433,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: first_Dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[0]'
+      value: Maybe try move one of those boxes to get back up!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[1]'
+      value: Hey! Looks like you fell down!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398832599056017703, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: 'first_Dialogue.Array.data[2]'
+      value: Maybe try move one of those boxes to get back up!
+      objectReference: {fileID: 0}
     - target: {fileID: 6849450813418467288, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1005.10834
@@ -10489,6 +10505,10 @@ PrefabInstance:
       propertyPath: player_Controls
       value: 
       objectReference: {fileID: 922263598}
+    - target: {fileID: 7075339791270811515, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: objective_Object
+      value: 
+      objectReference: {fileID: 1133751977}
     - target: {fileID: 7441538227468568978, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
       propertyPath: m_Name
       value: Puzzle NPC
@@ -10887,7 +10907,7 @@ PrefabInstance:
     - target: {fileID: 2081226825486156063, guid: e4dc2b91fef3d651a9b2b8d4a700ea18, type: 3}
       propertyPath: 'dialogue_Camera_Positions.Array.data[0]'
       value: 
-      objectReference: {fileID: 559769408}
+      objectReference: {fileID: 0}
     - target: {fileID: 2081226825486156063, guid: e4dc2b91fef3d651a9b2b8d4a700ea18, type: 3}
       propertyPath: 'dialogue_Camera_Positions.Array.data[1]'
       value: 

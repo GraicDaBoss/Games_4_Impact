@@ -2932,6 +2932,10 @@ PrefabInstance:
       propertyPath: player_Controls
       value: 
       objectReference: {fileID: 1677825151}
+    - target: {fileID: 7075339791270811515, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
+      propertyPath: objective_Object
+      value: 
+      objectReference: {fileID: 2023172437}
     - target: {fileID: 7441538227468568978, guid: bf10d81c967b04a0c927c80e0e47607e, type: 3}
       propertyPath: m_Name
       value: Puzzle NPC

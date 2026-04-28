@@ -8,7 +8,7 @@ public class Sort_Zone : MonoBehaviour
     public GameObject interactButton;
 
     private bool playerInside = false;
-
+    
     void Start()
     {
         if (interactButton != null)
@@ -33,6 +33,9 @@ public class Sort_Zone : MonoBehaviour
 
     public void OnInteractPressed()
     {
+        if (grabberArm.isAnimating)
+            return;
+            
         print("interact");
         if (!playerInside) return;
         print("player in zone");
