@@ -12,25 +12,25 @@ public class Character_Script : MonoBehaviour
     
     
     // Call this to bring string into Dialogue_System for printing
-    public string[] Get_Dialogue(int dialogue_ID)
+    public (string[], bool) Get_Dialogue(int dialogue_ID)
     {
         if (dialogue_ID == 0)
-            return first_Dialogue;
+            return (first_Dialogue, true);
 
         if (dialogue_ID == 1)
-            return reinteract_Dialogue;
+            return (reinteract_Dialogue, false);
         
         if (dialogue_ID == 2)
-            return player_Correct_Dialogue;
+            return (player_Correct_Dialogue, false);
         
         if (dialogue_ID == 3)
-            return player_Wrong_Dialogue;
+            return (player_Wrong_Dialogue, false);
         
         if (dialogue_ID == 4)
-            return finished_Dialogue;
+            return (finished_Dialogue, false);
         
         else
-            return null;
+            return (null, false);
 
     }
     
