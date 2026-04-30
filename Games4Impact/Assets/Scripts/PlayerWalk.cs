@@ -27,11 +27,11 @@ public class PlayerWalk : MonoBehaviour
     private bool has_Jumped;    
 
     [Header("Animation")]
-    [SerializeField]
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
 
-    [HideInInspector] public Vector3 ExternalVelocity; 
-
+    [HideInInspector] public Vector3 ExternalVelocity;
+    
+    
     private void Move()
     {
         Vector3 velocity = _rb.linearVelocity;
