@@ -24,7 +24,7 @@ public class PlayerWalk : MonoBehaviour
     private Vector2 _moveInput;
     private bool _jumpQueued;
     private bool _grounded;
-    
+    private bool has_Jumped;    
 
     [Header("Animation")]
     [SerializeField]
@@ -107,19 +107,27 @@ public class PlayerWalk : MonoBehaviour
         
         if (!_grounded) return;
         
-
+        _animator.SetTrigger("Jump");
+        Invoke("Jump_Delay", .2f);
         Vector3 velocity = _rb.linearVelocity;
         velocity.y = 0f;
         _rb.linearVelocity = velocity;
         _rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+        
     }
 
     private void CheckGround()
     {
+        if (_grounded == true && has_Jumped == true) // fix
+        {
+            _animator.SetTrigger("Landed");
+            has_Jumped = false;
+        }
+        
         
         float castOriginY = _col.bounds.min.y + 0.05f;
         Vector3 origin = new Vector3(transform.position.x, castOriginY, transform.position.z);
-
+        
         _grounded = Physics.Raycast(origin, Vector3.down,
             GroundCheckDistance, ~LayerMask.GetMask("Player"));
     }
@@ -127,6 +135,12 @@ public class PlayerWalk : MonoBehaviour
     private void trigger_Interact()
     {
         interact_Script.Interact();
+    }
+
+    // For animating, will play landed instantly otherwise
+    private void Jump_Delay()
+    {
+        has_Jumped = true;
     }
     
 }
