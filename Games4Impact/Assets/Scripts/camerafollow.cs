@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,12 +19,17 @@ public class camerafollow : MonoBehaviour
     private Vector3 mid_Dialogue_Rotation;
 
     [Header("Exposed for testing - Do not change")]
-    [SerializeField] private bool in_Dialogue = false;
-    [SerializeField] private bool ending_Dialogue = false;
-    [SerializeField] private bool mid_Pan = false;
-    
-    
-    
+    public bool in_Dialogue = false;
+    public bool ending_Dialogue = false;
+    public bool mid_Pan = false;
+
+
+    private void Start()
+    {
+        pre_Dialogue_Rotation = this.transform.rotation;
+
+    }
+
     void Update()
     {
         if (in_Dialogue == true)
@@ -31,7 +37,7 @@ public class camerafollow : MonoBehaviour
             // If entering dialogue
             if (ending_Dialogue == false && mid_Pan == true)
             {
-                transform.position = Vector3.Lerp(transform.position, mid_Dialogue_Position, Time.deltaTime * pan_Speed);
+                transform.position = Vector3.MoveTowards(transform.position, mid_Dialogue_Position, Time.deltaTime * pan_Speed);
                 transform.LookAt(mid_Dialogue_Rotation);
                 
                 if (transform.position == mid_Dialogue_Position)
@@ -41,15 +47,13 @@ public class camerafollow : MonoBehaviour
             // If leaving dialogue
             else if (ending_Dialogue == true && mid_Pan == true)
             {
-                transform.position = Vector3.Lerp(transform.position, playerPos.position + new Vector3(1, 2, -10), Time.deltaTime * pan_Speed);
-                transform.rotation = Quaternion.Lerp(transform.rotation, pre_Dialogue_Rotation, Time.deltaTime * pan_Speed);
+                transform.position = Vector3.MoveTowards(transform.position, playerPos.position + new Vector3(1, 2, -10), Time.deltaTime * pan_Speed);
+                this.transform.LookAt(playerPos.position);
                 
                 if (Vector3.Distance(transform.position, playerPos.position + new Vector3(1, 2, -10)) <= pan_Allowance)
                     Reset_Values();
             }
 
-            else
-                print ("ERROR: Camera not panning correctly");
         }
         
         else
@@ -60,11 +64,14 @@ public class camerafollow : MonoBehaviour
     public void Pan_To_Dialogue(Vector3 camera_Position_Target, Vector3 camera_Rotation_Target)
     {
         in_Dialogue = true;
+
+        // Check if in dialogue to not overwrite on mid dialogue pan
+        if (in_Dialogue == false)
+        {
+            pre_Dialogue_Position = transform.position;
+        }
         
-        pre_Dialogue_Position = transform.position;
         mid_Dialogue_Position = camera_Position_Target;
-        
-        pre_Dialogue_Rotation = this.transform.rotation;
         mid_Dialogue_Rotation = camera_Rotation_Target;
         
         mid_Pan = true;

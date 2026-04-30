@@ -9,7 +9,7 @@ public class Dialogue_System : MonoBehaviour
     [Header("Dialogue Functionality")]
     [SerializeField] private Character_Script character_Script;
     [SerializeField] private string[] current_Dialogue;
-    private int current_Dialogue_I = 0; // Dialogue ID
+    public int current_Dialogue_I = 0; // Dialogue ID
     private int current_Line_I = 0; // Individual line within Dialogue ID
     private bool currently_Typing = false; // For checking if dialogue is actively being written
     
@@ -23,12 +23,19 @@ public class Dialogue_System : MonoBehaviour
     // figure out later what needs to be turned off where
     // will probably have to use bools to return; specific functions instead of turning scripts off 
     [SerializeField] private PlayerWalk player_Controls;
+    [SerializeField] private On_Interact interact_Script;
     public bool in_Dialogue = false;
     
     [Header("Restrict Camera Controls")]
-    [SerializeField] private GameObject dialogue_Camera_Position; // Object under NPC prefab to place camera angle
+    public GameObject dialogue_Camera_Position; // Object under NPC prefab to place camera angle
     private camerafollow camera_Script;
 
+    [Header("Objective Camera Controls")]
+    [SerializeField] private GameObject objective_camera_Position;
+    [SerializeField] private GameObject objective_Object;
+    public bool pan_To_Objective = false;
+    public bool pan_On_Next_Line = false;
+    
     
 
     private void Start()
@@ -40,12 +47,14 @@ public class Dialogue_System : MonoBehaviour
     public void Start_Dialogue()
     {
         // Retrieve dialogue
-        current_Dialogue = character_Script.Get_Dialogue(current_Dialogue_I);
+        (current_Dialogue, pan_On_Next_Line) = character_Script.Get_Dialogue(current_Dialogue_I);
         if (current_Dialogue == null)
         {
             print("ERROR: Dialogue not found");
             return;
         }
+        
+        interact_Script.npc_Can_Interact = true;
         
         // Set up camera
         Vector3 camera_Target_Position = dialogue_Camera_Position.transform.position;
@@ -67,13 +76,13 @@ public class Dialogue_System : MonoBehaviour
         // Add each character in the line incrementally
         foreach (char c in current_Dialogue[current_Line_I].ToCharArray())
         {
+            
             text_Component.text += c;
             yield return new WaitForSeconds(text_Speed);
         }
         currently_Typing = false;
         current_Line_I++;
         //talking_Clip.Pause();
-        
     }
 
     
@@ -99,12 +108,27 @@ public class Dialogue_System : MonoBehaviour
             
             camera_Script.Pan_From_Dialogue();
             Toggle_Dialogue();
+            interact_Script.npc_Can_Interact = false;
         }
             
-        // Else move onto next line
+        // Else move onto next line, check for camera pans
         else
         {
+            if (pan_To_Objective == true)
+            {
+                camera_Script.mid_Pan = true;
+                
+                Vector3 camera_Target_Position = objective_camera_Position.transform.position;
+                camera_Script.Pan_To_Dialogue(camera_Target_Position, objective_Object.transform.position);
+            }
+            
             StartCoroutine(Type_Line());
+            
+            if (pan_On_Next_Line == true)
+            {
+                pan_On_Next_Line = false;
+                pan_To_Objective = true;
+            }
         }
     }
     

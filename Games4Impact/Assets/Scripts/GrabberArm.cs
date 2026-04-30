@@ -18,7 +18,7 @@ public class GrabberArm : MonoBehaviour
     public float moveSpeed = 3f;
 
     private Transform currentShirt;
-    private bool isAnimating = false;
+    public bool isAnimating = false;
 
     public void TriggerGrab()
     {
