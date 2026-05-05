@@ -11212,6 +11212,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ff009f449ca0ce4eaaa327a9e73f57f, type: 3}
+--- !u!1 &1065005741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6586034674952698759, guid: cc0e734f12dc4cda6af3050e5da53b78, type: 3}
+  m_PrefabInstance: {fileID: 1455254456576954505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1068608030
 GameObject:
   m_ObjectHideFlags: 0
@@ -15068,6 +15073,18 @@ PrefabInstance:
       propertyPath: player_Controls
       value: 
       objectReference: {fileID: 2129378931}
+    - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: objective_Object
+      value: 
+      objectReference: {fileID: 1065005741}
+    - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: otherUI.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: 'otherUI.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1065005741}
     - target: {fileID: 9127584059871595948, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
       propertyPath: m_Name
       value: NPC Base
