@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {fileID: 0}
-  pan_Speed: 4
+  pan_Speed: 10
   pan_Allowance: 0.1
   pre_Dialogue_Position: {x: 0, y: 0, z: 0}
   mid_Dialogue_Position: {x: 0, y: 0, z: 0}
