@@ -27,13 +27,12 @@ public class Sorting_Manager : MonoBehaviour
     {
         if (currentIndex >= shirts.Length)
         {
-            dialogue_System.dialogue_Camera_Position = dialogue_Camera_Positions[0];
-            dialogue_System.current_Dialogue_I = 4;
-            dialogue_System.Start_Dialogue();
-
             if (endObject != null)
                 endObject.SetActive(false);
 
+            dialogue_System.dialogue_Camera_Position = dialogue_Camera_Positions[0];
+            dialogue_System.current_Dialogue_I = 4;
+            dialogue_System.Start_Dialogue();
             return;
         }
 

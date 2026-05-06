@@ -10,7 +10,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Enable camera switching when player enters collider
+        
         isColliderEntered = true;
 
         // Show button
@@ -24,7 +24,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // Disable camera switching when player exits collider
+        
         isColliderEntered = false;
 
         // Hide button
@@ -33,7 +33,7 @@ public class CameraSwitcher : MonoBehaviour
             buttonObject.SetActive(false);
         }
 
-        // Reset camera to inactive if new camera was active
+        
         if (isNewCameraActive)
         {
             SwitchCamera();
@@ -44,7 +44,7 @@ public class CameraSwitcher : MonoBehaviour
 
     public void OnCameraButtonPressed()
     {
-        // Only allow camera switching if collider is entered
+       
         if (isColliderEntered)
         {
             SwitchCamera();
@@ -55,7 +55,7 @@ public class CameraSwitcher : MonoBehaviour
     {
         if (isNewCameraActive)
         {
-            // Deactivate new camera
+           
             newCamera.enabled = false;
             isNewCameraActive = false;
             Debug.Log("Camera deactivated");
