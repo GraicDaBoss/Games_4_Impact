@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class PlayerWalk : MonoBehaviour
 {
 
@@ -20,7 +20,7 @@ public class PlayerWalk : MonoBehaviour
     private InputAction _jump;
     private InputAction _interact;
     private Rigidbody _rb;
-    private BoxCollider _col;
+    private CapsuleCollider _col;
     private Vector2 _moveInput;
     private bool _jumpQueued;
     private bool _grounded;
@@ -44,7 +44,7 @@ public class PlayerWalk : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _col = GetComponent<BoxCollider>();
+        _col = GetComponent<CapsuleCollider>();
         _rb.freezeRotation = true;
         _move = InputActions.FindAction("Move");
         _jump = InputActions.FindAction("Jump");
