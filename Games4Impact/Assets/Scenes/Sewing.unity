@@ -7543,6 +7543,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2992147225316142222, guid: 9a99d61ece25e9f4991aa84661825fe0, type: 3}
   m_PrefabInstance: {fileID: 627553497}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &628278933 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7751502263338152152, guid: 731c93b00dd4a26ce98b9b87eb10d0e0, type: 3}
+  m_PrefabInstance: {fileID: 6487508819863117381}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &631237268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15649,6 +15654,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 628278933}
+    - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
       propertyPath: dialogue_Box
       value: 
       objectReference: {fileID: 1819702055}
@@ -21276,6 +21285,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 628278933}
     - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
       propertyPath: dialogue_Box
       value: 
