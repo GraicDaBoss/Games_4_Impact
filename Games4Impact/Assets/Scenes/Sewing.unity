@@ -20729,6 +20729,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1014009609}
     m_Modifications:
+    - target: {fileID: 327180803085266846, guid: 4073ce129505abd7f937eca6c35094a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 17248173}
+    - target: {fileID: 327180803085266846, guid: 4073ce129505abd7f937eca6c35094a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Interact
+      objectReference: {fileID: 0}
     - target: {fileID: 2916012993964462983, guid: 4073ce129505abd7f937eca6c35094a3, type: 3}
       propertyPath: m_Name
       value: Dialogue Box
@@ -21534,6 +21542,14 @@ PrefabInstance:
       propertyPath: objective_Object
       value: 
       objectReference: {fileID: 146522349}
+    - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: otherUI.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: 'otherUI.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1065005741}
     - target: {fileID: 9127584059871595948, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
       propertyPath: m_Name
       value: Yarn NPC
