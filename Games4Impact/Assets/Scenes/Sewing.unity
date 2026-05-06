@@ -15640,6 +15640,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6597646014788549709, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006659743899661780, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
       propertyPath: dialogue_Box
       value: 
@@ -17784,7 +17792,7 @@ Transform:
   m_GameObject: {fileID: 1594638660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1006, y: 548.3, z: -24.54}
+  m_LocalPosition: {x: 1006, y: 571.08, z: -24.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21258,6 +21266,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107141323093863398, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597646014788549709, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006659743899661780, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925781300364251973, guid: 21efda9c1b0c6e176bd6cd845b90b2db, type: 3}
