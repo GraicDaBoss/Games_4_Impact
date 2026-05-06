@@ -19,11 +19,12 @@ public class Dialogue_System : MonoBehaviour
     [SerializeField] private float text_Speed;
 
     [Header("Other UI To Disable")]
-    [SerializeField] private GameObject[] otherUI; // assign in Inspector
+    [SerializeField] private GameObject[] otherUI;
 
     [Header("Restrict Player Controls")]
     [SerializeField] private PlayerWalk player_Controls;
     [SerializeField] private On_Interact interact_Script;
+    [SerializeField] private Animator animator;
     public bool in_Dialogue = false;
 
     [Header("Restrict Camera Controls")]
@@ -36,12 +37,14 @@ public class Dialogue_System : MonoBehaviour
     public bool pan_To_Objective = false;
     public bool pan_On_Next_Line = false;
 
+    
+    
     private void Start()
     {
         camera_Script = Camera.main.GetComponent<camerafollow>();
     }
 
-    // 🔹 Enable/Disable all other UI
+    // Turn off the mobile controls
     private void SetOtherUI(bool state)
     {
         foreach (GameObject ui in otherUI)
@@ -60,6 +63,7 @@ public class Dialogue_System : MonoBehaviour
 
     public void Start_Dialogue()
     {
+        animator.SetTrigger("trigger_Idle");
         (current_Dialogue, pan_On_Next_Line) = character_Script.Get_Dialogue(current_Dialogue_I);
 
         if (current_Dialogue == null)
@@ -79,6 +83,7 @@ public class Dialogue_System : MonoBehaviour
         StartCoroutine(Type_Line());
     }
 
+    // Types character by character to dialogue box
     IEnumerator Type_Line()
     {
         text_Component.text = "";
@@ -94,6 +99,7 @@ public class Dialogue_System : MonoBehaviour
         current_Line_I++;
     }
 
+    // Triggered from the Interact script
     public void Dialogue_Interacted()
     {
         if (currently_Typing)
@@ -109,8 +115,7 @@ public class Dialogue_System : MonoBehaviour
                 current_Dialogue_I = 1;
 
             camera_Script.Pan_From_Dialogue();
-
-            // 🔥 Ends dialogue (this also re-enables UI)
+            
             Toggle_Dialogue();
 
             interact_Script.npc_Can_Interact = false;
@@ -138,11 +143,8 @@ public class Dialogue_System : MonoBehaviour
     private void Toggle_Dialogue()
     {
         in_Dialogue = !in_Dialogue;
-
-        // Show/hide dialogue UI
         dialogue_Box.SetActive(in_Dialogue);
-
-        // 🔥 THIS controls all other UI
+        
         SetOtherUI(!in_Dialogue);
 
         text_Component.text = "";
